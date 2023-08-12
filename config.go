@@ -65,7 +65,6 @@ func (cors *cors) applyCors(c *gin.Context) {
 		// request is not a CORS request
 		return
 	}
-	host := c.Request.Host
 	
 	if !cors.validateOrigin(origin) {
 		c.AbortWithStatus(http.StatusForbidden)
