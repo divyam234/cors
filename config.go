@@ -66,13 +66,7 @@ func (cors *cors) applyCors(c *gin.Context) {
 		return
 	}
 	host := c.Request.Host
-
-	if origin == "http://"+host || origin == "https://"+host {
-		// request is not a CORS request but have origin header.
-		// for example, use fetch api
-		return
-	}
-
+	
 	if !cors.validateOrigin(origin) {
 		c.AbortWithStatus(http.StatusForbidden)
 		return
